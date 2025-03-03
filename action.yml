@@ -1,0 +1,36 @@
+name: 'Repository Backup'
+author: 'ihavespoons'
+description: 'Backup a repository to S3 using OIDC provider'
+inputs:
+  target-bucket:
+    description: 'The S3 bucket name'
+    required: true
+  bucket-region:
+    description: 'The region of the S3 bucket'
+    required: true
+  role-arn:
+    description: 'The ARN of the IAM role to assume'
+    required: true
+  oidc-audience:
+    description: 'The audience value for the OIDC token'
+    required: false
+    default: 'sts.amazonaws.com'
+  backup-prefix:
+    description: 'Prefix for the backup file name'
+    required: false
+    default: 'backup'
+  keep-versions:
+    description: 'Number of backup versions to keep (older versions will be deleted)'
+    required: false
+    default: '5'
+runs:
+  using: 'python3'
+  main: 'src/main.py'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+tags:
+  - backup
+  - s3
+  - aws
+  - oidc
