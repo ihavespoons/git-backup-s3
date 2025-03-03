@@ -24,8 +24,8 @@ inputs:
     required: false
     default: '5'
 runs:
-  using: 'python3'
-  main: 'src/main.py'
+  using: "docker"
+  image: "Dockerfile"
 branding:
   icon: 'upload-cloud'
   color: 'blue'
